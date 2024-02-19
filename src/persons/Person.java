@@ -12,7 +12,7 @@ public abstract class Person {
     private double nivellMotivacio; //1-10
     private double puntuacio; //30-100
 
-    private float sou;
+    private double sou;
 
     public void entrenar(){
         this.nivellMotivacio += 2;
@@ -21,7 +21,7 @@ public abstract class Person {
         }
     }
 
-    public Person(String nom, String cognom, String dataNaix, float sou) {
+    public Person(String nom, String cognom, String dataNaix, double sou) {
         Person.numPersones += 1;
         this.personaId = Person.numPersones;
         this.nom = nom;
@@ -32,11 +32,11 @@ public abstract class Person {
         this.puntuacio = Utils.randomNumberBetween(30,100);
     }
 
-    public float getSou() {
+    public double getSou() {
         return sou;
     }
 
-    public void setSou(float sou) {
+    public void setSou(double sou) {
         this.sou = sou;
     }
 

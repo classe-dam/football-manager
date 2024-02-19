@@ -5,25 +5,25 @@ import utils.Utils;
 
 import java.util.Random;
 
-public class Jugador extends Person implements Transferible{
+public class Player extends Person implements Transferible{
     public enum Posicio {
         POR,
         DEF,
         MIG,
-        DAY
+        DAV
     }
 
     private boolean transferible;
     private int dorsal;
     private Posicio posicio;
 
-    public Jugador(String nom,
-                   String cognom,
-                   String dataNaix,
-                   float sou,
-                   boolean transferible,
-                   int dorsal,
-                   Posicio posicio
+    public Player(String nom,
+                  String cognom,
+                  String dataNaix,
+                  double sou,
+                  boolean transferible,
+                  int dorsal,
+                  Posicio posicio
     ) {
         super(nom, cognom, dataNaix, sou);
         this.transferible = transferible;

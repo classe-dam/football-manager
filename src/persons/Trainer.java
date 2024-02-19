@@ -1,11 +1,11 @@
 package persons;
 
-public class Entrenador extends Person{
+public class Trainer extends Person{
 
     private int numTornejosGuanyats;
     private boolean seleccionadorNacional;
 
-    public Entrenador(String nom, String cognom, String dataNaix, float sou, int numTornejosGuanyats, boolean seleccionadorNacional) {
+    public Trainer(String nom, String cognom, String dataNaix, float sou, int numTornejosGuanyats, boolean seleccionadorNacional) {
         super(nom, cognom, dataNaix, sou);
         this.numTornejosGuanyats = numTornejosGuanyats;
         this.seleccionadorNacional = seleccionadorNacional;
@@ -42,8 +42,8 @@ public class Entrenador extends Person{
 
 
     public void incrementarSou(){
-        float souActual = super.getSou();
-        float nouSou = souActual + (souActual * 5 / 100);
+        double souActual = super.getSou();
+        double nouSou = souActual + (souActual * 5 / 100);
         super.setSou(nouSou);
     }
 }
