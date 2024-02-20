@@ -5,7 +5,7 @@ public class Trainer extends Person{
     private int numTornejosGuanyats;
     private boolean seleccionadorNacional;
 
-    public Trainer(String nom, String cognom, String dataNaix, float sou, int numTornejosGuanyats, boolean seleccionadorNacional) {
+    public Trainer(String nom, String cognom, String dataNaix, double sou, int numTornejosGuanyats, boolean seleccionadorNacional) {
         super(nom, cognom, dataNaix, sou);
         this.numTornejosGuanyats = numTornejosGuanyats;
         this.seleccionadorNacional = seleccionadorNacional;

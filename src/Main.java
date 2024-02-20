@@ -58,6 +58,7 @@ public class Main {
         }else{
             createdPerson = PersonFactory.newTrainer();
         }
+        System.out.println("adding person" + createdPerson.toString());
         peopleArray.add(createdPerson);
     }
 
