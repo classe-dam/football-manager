@@ -11,14 +11,43 @@ public class TeclatUtils {
         System.out.println(message);
 
         //get input
-        int input;
+        int input = 0;
         do {
-            input = Teclat.llegirInt();
-            if (input >= min && input <= max) {
-                chosenCorrectly = true;
-            } else {
-                System.out.println("The input need to be between " + min + " and " + max);
+            try {
+                input = Teclat.llegirInt();
+                if (input >= min && input <= max) {
+                    chosenCorrectly = true;
+                } else {
+                    System.out.println("The input need to be between " + min + " and " + max);
+                }
+            }catch(Exception err){
+                System.out.println("number too big, please enter a smaller number");
             }
+
+        } while (!chosenCorrectly);
+
+        return input;
+    }
+
+    public static int getInputInt(String message, int min) {
+        boolean chosenCorrectly = false;
+        // print title
+        System.out.println(message);
+
+        //get input
+        int input = 0;
+        do {
+            try {
+                input = Teclat.llegirInt();
+                if (input >= min) {
+                    chosenCorrectly = true;
+                } else {
+                    System.out.println("The input need to be between " + min);
+                }
+            }catch(Exception err){
+                System.out.println("number too big, please enter a smaller number");
+            }
+
         } while (!chosenCorrectly);
 
         return input;
@@ -30,22 +59,55 @@ public class TeclatUtils {
         System.out.println(message);
 
         //get input
-        double input;
+        double input = 0;
         do {
-            input = Teclat.llegirInt();
-            if (input >= min) {
-                chosenCorrectly = true;
-            } else {
-                System.out.println("The input need to be at least " + min);
+            try {
+                input = Teclat.llegirInt();
+                if (input >= min) {
+                    chosenCorrectly = true;
+                } else {
+                    System.out.println("The input need to be at least " + min);
+                }
+            }catch(Exception err){
+                System.out.println("number too big, please enter a smaller number");
             }
         } while (!chosenCorrectly);
 
         return input;
     }
 
+    public static String getDate(String title,int minYear, int maxYear){
+        int day;
+        int month;
+        int year;
+        year = getInputInt("Enter the year", minYear, maxYear);
+        month = getInputInt("Enter the month", 1, 12);
+        day = getInputInt("Enter the day", 1, 30);
+
+        return day + "/" + month + "/" + year;
+    }
+
     public static boolean getBoolean(String message){
         System.out.println(message);
-        return Teclat.llegirBoolean();
+        boolean correct = false;
+        char letter;
+        boolean value = false;
+
+        do {
+            System.out.println("choose between y/n");
+            letter = Teclat.llegirChar();
+            letter = Character.toUpperCase(letter);
+            if (letter == 'Y'){
+                value = true;
+                correct = true;
+            }else if(letter == 'F'){
+                value = false;
+                correct = true;
+            }else{
+                System.out.println("please choose a correct boolean");
+            }
+        }while (!correct);
+        return value;
     }
 
     public static Player.Posicio getPlayerPosition(){
@@ -71,13 +133,18 @@ public class TeclatUtils {
         System.out.println(message);
 
         //get input
-        double input;
+        double input = 0;
         do {
-            input = Teclat.llegirInt();
-            if (input >= min && input <= max) {
-                chosenCorrectly = true;
-            } else {
-                System.out.println("The input need to be between " + min + " and " + max);
+            try {
+
+                input = Teclat.llegirInt();
+                if (input >= min && input <= max) {
+                    chosenCorrectly = true;
+                } else {
+                    System.out.println("The input need to be between " + min + " and " + max);
+                }
+            }catch(Exception err){
+                System.out.println("number too big, please enter a smaller number");
             }
         } while (!chosenCorrectly);
 
