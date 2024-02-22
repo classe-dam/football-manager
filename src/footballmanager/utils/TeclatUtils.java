@@ -1,7 +1,6 @@
-package utils;
+package footballmanager.utils;
 
-import equips.Equip;
-import persons.Player;
+import footballmanager.persons.Player;
 
 public class TeclatUtils {
 
@@ -100,7 +99,7 @@ public class TeclatUtils {
             if (letter == 'Y'){
                 value = true;
                 correct = true;
-            }else if(letter == 'F'){
+            }else if(letter == 'N'){
                 value = false;
                 correct = true;
             }else{
@@ -155,6 +154,15 @@ public class TeclatUtils {
     public static String getStringInput(String message){
         System.out.println(message);
         return Teclat.llegirString();
+    }
+
+    public static String getOptionalStringInput(String optionalMessage, String message){
+        boolean userWants = getBoolean(optionalMessage);
+        if(userWants){
+            return getStringInput(message);
+        }else{
+            return null;
+        }
     }
 
     public static int getOptionChosenByUser(String titleMessage, String[] options) {

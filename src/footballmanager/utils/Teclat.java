@@ -2,7 +2,7 @@
 // Classe Teclat
 
 // Paquet
-package utils;
+package footballmanager.utils;
 
 // Imports
 import java.math.BigDecimal;

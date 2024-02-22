@@ -1,6 +1,4 @@
-package utils;
-
-import persons.PersonFactory;
+package footballmanager.utils;
 
 import java.util.Random;
 
