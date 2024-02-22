@@ -1,8 +1,9 @@
-package persons;
+package footballmanager.persons;
 
-import equips.Equip;
-import utils.Utils;
+import footballmanager.teams.Team;
+import footballmanager.utils.Utils;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Player extends Person implements Transferible{
@@ -99,7 +100,12 @@ public class Player extends Person implements Transferible{
     public boolean esTransferible(){
         return transferible;
     };
-    public void transferirAEquip(Equip e){
+    public void transferirAEquip(Team e){
 //        pendent a fer
     };
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.getNom() + this.dorsal);
+    }
 }

@@ -1,6 +1,6 @@
-package persons;
+package footballmanager.persons;
 
-import utils.Utils;
+import footballmanager.utils.Utils;
 
 public abstract class Person {
     private static int numPersones;

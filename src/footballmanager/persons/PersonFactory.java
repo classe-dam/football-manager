@@ -1,6 +1,6 @@
-package persons;
+package footballmanager.persons;
 
-import utils.TeclatUtils;
+import footballmanager.utils.TeclatUtils;
 
 public class PersonFactory {
 

@@ -1,4 +1,4 @@
-package persons;
+package footballmanager.persons;
 
 public class Trainer extends Person{
 
