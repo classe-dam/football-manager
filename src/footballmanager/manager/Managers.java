@@ -6,7 +6,7 @@ import footballmanager.utils.TeclatUtils;
 
 import java.util.ArrayList;
 
-public class Manager {
+public class Managers {
     private static String[] preguntas_manager = {"Sortir","Veure classificació lliga","Gestionar equip","Donar d'alta equip",
             "Donar d'alta jugador/a o entrenador/a","Consultar dades equip","Consultar dades jugador/a",
             "Disputar nova lliga","Realitzar sessió entrenament"
@@ -25,34 +25,36 @@ public class Manager {
                     exit = true;
                     break;
                 case 1:
-                    ManagerFunctions.veureClassificacioLliga();
+                    PolitecnicsManagerHandler.veureClassificacioLliga();
                     break;
                 case 2:
-                    ManagerFunctions.gestionarEquip(teamsArray, peopleArray);
+                    PolitecnicsManagerHandler.gestionarEquip(teamsArray, peopleArray);
                     break;
                 case 3:
-                    ManagerFunctions.nouEquip(teamsArray);
+                    PolitecnicsManagerHandler.nouEquip(teamsArray);
                     break;
                 case 4:
-                    ManagerFunctions.newPerson(peopleArray);
+                    PolitecnicsManagerHandler.newPerson(peopleArray);
                     break;
                 case 5:
-                    ManagerFunctions.consultarEquip(teamsArray);
+                    PolitecnicsManagerHandler.consultarEquip(teamsArray);
                     break;
                 case 6:
-                    ManagerFunctions.consultarPersona(teamsArray);
+                    PolitecnicsManagerHandler.consultarPersona(teamsArray);
                     break;
                 case 7:
-                    ManagerFunctions.novaLliga();
+                    PolitecnicsManagerHandler.novaLliga();
                     break;
                 case 8:
-                    ManagerFunctions.realitzarEntrenament();
+                    PolitecnicsManagerHandler.realitzarEntrenament();
                     break;
             }
         }while(!exit);
     }
 
-
+//    {"Sortir","Donar de baixa equip","Modificar president/a","Destituir entrenador/a",
+//            "Fitxar jugador/a o entrenador/a","Fitxar jugador/a o entrenador/a"
+//    };
     public static void initTeamManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray, Team team){
         boolean exit = false;
         do {
@@ -62,19 +64,19 @@ public class Manager {
                     exit = true;
                     break;
                 case 1:
-                    ManagerFunctions.veureClassificacioLliga();
+                    PolitecnicsManagerHandler.veureClassificacioLliga();
                     break;
                 case 2:
-                    ManagerFunctions.gestionarEquip(teamsArray, peopleArray);
+                    PolitecnicsManagerHandler.gestionarEquip(teamsArray, peopleArray);
                     break;
                 case 3:
-                    ManagerFunctions.nouEquip(teamsArray);
+                    PolitecnicsManagerHandler.nouEquip(teamsArray);
                     break;
                 case 4:
-                    ManagerFunctions.newPerson(peopleArray);
+                    PolitecnicsManagerHandler.newPerson(peopleArray);
                     break;
                 case 5:
-                    ManagerFunctions.consultarEquip(teamsArray);
+                    PolitecnicsManagerHandler.consultarEquip(teamsArray);
                     break;
             }
         }while(!exit);

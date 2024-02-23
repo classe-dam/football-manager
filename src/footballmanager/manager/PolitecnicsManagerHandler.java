@@ -12,7 +12,7 @@ import footballmanager.utils.Utils;
 
 import java.util.ArrayList;
 
-public class ManagerFunctions {
+public class PolitecnicsManagerHandler {
     public static void nouEquip(ArrayList<Team> teamsArray){
         Team newTeam =  TeamFactory.createTeam();
         System.out.println("new team data" + newTeam);
@@ -79,9 +79,10 @@ public class ManagerFunctions {
         String teamName = TeclatUtils.getStringInput("wich equip do you wanna manage?");
         Team team = TeamUtility.getTeam(teamName, teamsArray);
         if(team != null){
-            Manager.initTeamManager(teamsArray, peopleArray, team);
+            Managers.initTeamManager(teamsArray, peopleArray, team);
         }else{
             Utils.printRed("team does not exists please try again with a correct team");
         }
     }
+
 }
