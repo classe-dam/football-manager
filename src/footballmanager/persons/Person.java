@@ -93,6 +93,11 @@ public abstract class Person {
         return "Person{" +
                 "personaId=" + personaId +
                 ", nom='" + nom + '\'' +
+                ", cognom='" + cognom + '\'' +
+                ", dataNaix='" + dataNaix + '\'' +
+                ", nivellMotivacio=" + nivellMotivacio +
+                ", puntuacio=" + puntuacio +
+                ", sou=" + sou +
                 '}';
     }
 }

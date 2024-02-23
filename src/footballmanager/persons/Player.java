@@ -104,6 +104,24 @@ public class Player extends Person implements Transferible{
 //        pendent a fer
     };
 
+    public boolean equals(Player p){
+        return p.hashCode() == this.hashCode();
+    }
+
+    public boolean equals(int hashCode){
+        return hashCode == this.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "transferible=" + transferible +
+                ", dorsal=" + dorsal +
+                ", posicio=" + posicio +
+                super.toString() +
+                '}';
+    }
+
     @Override
     public int hashCode(){
         return Objects.hash(this.getNom() + this.dorsal);

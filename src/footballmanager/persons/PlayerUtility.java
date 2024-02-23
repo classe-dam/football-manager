@@ -1,7 +1,9 @@
 package footballmanager.persons;
 
+import java.util.Objects;
+
 public class PlayerUtility {
     public static int generatePlayerHashCode(int dorsal, String name){
-        return 1;
+        return  Objects.hash(name + dorsal);
     }
 }
