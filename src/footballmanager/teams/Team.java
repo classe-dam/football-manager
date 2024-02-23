@@ -80,18 +80,6 @@ public class Team {
         this.players.add(player);
     }
 
-    public ArrayList<String> getPlayersNames(){
-        return null;
-    }
-
-    public double calcularAveragePuntuationOfPlayers(){
-        return 1;
-    }
-
-    public double calculateAverageMotivation(){
-        return 0;
-    }
-
     @Override
     public String toString() {
         return "Team{" +
@@ -145,6 +133,14 @@ public class Team {
     private void constructorCommonActions(){
         this.dorsalsUsats = new HashSet<>();
         this.players = new ArrayList<>();
+    }
+
+    public boolean equals(Team t){
+        return t.hashCode() == this.hashCode();
+    }
+
+    public boolean equals(int hashcode){
+        return hashcode == this.hashCode();
     }
 
     @Override

@@ -1,11 +1,8 @@
 package footballmanager;
 
-import footballmanager.persons.Player;
-import footballmanager.persons.Trainer;
+import footballmanager.persons.*;
 import footballmanager.teams.TeamFactory;
 import footballmanager.teams.Team;
-import footballmanager.persons.Person;
-import footballmanager.persons.PersonFactory;
 import footballmanager.teams.TeamUtility;
 import footballmanager.utils.TeclatUtils;
 
@@ -19,24 +16,27 @@ public class Main {
 
     public static void loadValues(ArrayList<Person> peopleArray,ArrayList<Team> teamsArray){
         Person player1 = new Player("player1","playersurname1","birthDate", 1000000, true, 5, Player.Posicio.DAV);
-        Person player2 = new Player("player2","playersurname2","birthDate", 1000000, true, 5, Player.Posicio.DAV);
-        Person player3 = new Player("player3","playersurname3","birthDate", 1000000, true, 5, Player.Posicio.DAV);
+        Person player2 = new Player("player2","playersurname2","birthDate", 1000000, true, 6, Player.Posicio.DAV);
+        Person player3 = new Player("player3","playersurname3","birthDate", 1000000, true, 7, Player.Posicio.DAV);
         Person trainer1 = new Trainer("trainer1","trainersurname3","birthDate", 10000, 5, true);
         Person trainer2 = new Trainer("trainer2","trainersurname3","birthDate", 10000, 2, false);
+        Team team1 = new Team("team1","Barcelona","Date");
+        Team team2 = new Team("team2","Texas","Date");
+        team1.addPlayer((Player) player1);
+        team1.addPlayer((Player) player2);
+        team2.addPlayer((Player) player3);
         peopleArray.add(player1);
         peopleArray.add(player2);
         peopleArray.add(player3);
         peopleArray.add(trainer1);
         peopleArray.add(trainer2);
-        Team team1 = new Team("team1","Barcelona","Date");
-        Team team2 = new Team("team2","Texas","Date");
         teamsArray.add(team1);
         teamsArray.add(team2);
     };
     public static void main(String[] args) {
         ArrayList<Person> peopleArray = new ArrayList<>();
         ArrayList<Team> teamsArray = new ArrayList<>();
-
+        loadValues(peopleArray,teamsArray);
         boolean exit = false;
         do {
             int choosenQuestion = TeclatUtils.getOptionChosenByUser("Welcome to Politècnics Football Manager",preguntas_manager);
@@ -69,7 +69,7 @@ public class Main {
                     realitzarEntrenament();
                     break;
             }
-        }while(exit);
+        }while(!exit);
     }
 
     public static void veureClassificacioLliga(){
@@ -116,6 +116,15 @@ public class Main {
         boolean doesTeamExists = Team.doesEquipExists(teamName);
         if(doesTeamExists) {
             Team team = TeamUtility.getTeam(teamName, teamsArray);
+            int dorsal = TeclatUtils.getInputInt("Wich is the player dorsal???",1,100);
+            String playerName = TeclatUtils.getStringInput("Wich is the player name???");
+            int playerHashcode = PlayerUtility.generatePlayerHashCode(dorsal, playerName);
+            Player player = TeamUtility.getPlayerFromTeam(team,playerHashcode);
+            if(player != null){
+                System.out.println(player);
+            }else{
+                System.out.println("player does not exists in that team");
+            }
         }else{
             System.out.println("team does not exists please try again with a correct team");
         }
