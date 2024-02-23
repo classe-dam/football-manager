@@ -26,4 +26,6 @@ public class Utils {
         // Print message in red
         System.out.println(ANSI_RED + message + ANSI_RESET);
     }
+
+
 }
