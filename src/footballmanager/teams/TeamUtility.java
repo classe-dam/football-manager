@@ -5,11 +5,13 @@ import footballmanager.utils.TeclatUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
-interface Executable {
-
-}
 public class TeamUtility {
+
+    public static int generateTeamHashCode(String name){
+        return Objects.hash(name);
+    }
     public static void printJugadorsAmbElSeuDorsal(Team team){
         System.out.println("Players of team: "+ team.getName());
         ArrayList<Player> players = team.getPlayers();
@@ -22,9 +24,10 @@ public class TeamUtility {
 
     public static Team getTeam(String teamName, ArrayList<Team> teams){
         Iterator<Team> teamsIterator = teams.iterator();
+        int hashcodeTeam = TeamUtility.generateTeamHashCode(teamName);
         while(teamsIterator.hasNext()){
             Team team = teamsIterator.next();
-            if(team.getName().equals(teamName)){
+            if(team.equals(hashcodeTeam)){
                 return team;
             }
         }
