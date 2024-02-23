@@ -4,7 +4,9 @@ import footballmanager.persons.*;
 import footballmanager.teams.TeamFactory;
 import footballmanager.teams.Team;
 import footballmanager.teams.TeamUtility;
+import footballmanager.utils.DataUtils;
 import footballmanager.utils.TeclatUtils;
+import footballmanager.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -14,29 +16,18 @@ public class Main {
             "Disputar nova lliga","Realitzar sessió entrenament"
     };
 
-    public static void loadValues(ArrayList<Person> peopleArray,ArrayList<Team> teamsArray){
-        Person player1 = new Player("player1","playersurname1","birthDate", 1000000, true, 5, Player.Posicio.DAV);
-        Person player2 = new Player("player2","playersurname2","birthDate", 1000000, true, 6, Player.Posicio.DAV);
-        Person player3 = new Player("player3","playersurname3","birthDate", 1000000, true, 7, Player.Posicio.DAV);
-        Person trainer1 = new Trainer("trainer1","trainersurname3","birthDate", 10000, 5, true);
-        Person trainer2 = new Trainer("trainer2","trainersurname3","birthDate", 10000, 2, false);
-        Team team1 = new Team("team1","Barcelona","Date");
-        Team team2 = new Team("team2","Texas","Date");
-        team1.addPlayer((Player) player1);
-        team1.addPlayer((Player) player2);
-        team2.addPlayer((Player) player3);
-        peopleArray.add(player1);
-        peopleArray.add(player2);
-        peopleArray.add(player3);
-        peopleArray.add(trainer1);
-        peopleArray.add(trainer2);
-        teamsArray.add(team1);
-        teamsArray.add(team2);
+    private static String[] preguntas_team_manager = {"Sortir","Donar de baixa equip","Modificar president/a","Destituir entrenador/a",
+            "Fitxar jugador/a o entrenador/a","Fitxar jugador/a o entrenador/a"
     };
+
     public static void main(String[] args) {
         ArrayList<Person> peopleArray = new ArrayList<>();
         ArrayList<Team> teamsArray = new ArrayList<>();
-        loadValues(peopleArray,teamsArray);
+        DataUtils.loadValues(peopleArray,teamsArray);
+        initPolitecnicsManager(teamsArray,peopleArray);
+    }
+
+    public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){
         boolean exit = false;
         do {
             int choosenQuestion = TeclatUtils.getOptionChosenByUser("Welcome to Politècnics Football Manager",preguntas_manager);
@@ -48,7 +39,7 @@ public class Main {
                     veureClassificacioLliga();
                     break;
                 case 2:
-                    gestionarEquip();
+                    gestionarEquip(teamsArray, peopleArray);
                     break;
                 case 3:
                     nouEquip(teamsArray);
@@ -76,8 +67,41 @@ public class Main {
 
     }
 
-    public static void gestionarEquip(){
+    public static void gestionarEquip(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){
+        String teamName = TeclatUtils.getStringInput("wich equip do you wanna manage?");
+        Team team = TeamUtility.getTeam(teamName, teamsArray);
+        if(team != null){
+          initTeamManager(teamsArray, peopleArray, team);
+        }else{
+            Utils.printRed("team does not exists please try again with a correct team");
+        }
+    }
 
+    public static void initTeamManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray, Team team){
+        boolean exit = false;
+        do {
+            int choosenQuestion = TeclatUtils.getOptionChosenByUser("Welcome to Team Manager",preguntas_team_manager);
+            switch(choosenQuestion){
+                case 0:
+                    exit = true;
+                    break;
+                case 1:
+                    veureClassificacioLliga();
+                    break;
+                case 2:
+                    gestionarEquip(teamsArray, peopleArray);
+                    break;
+                case 3:
+                    nouEquip(teamsArray);
+                    break;
+                case 4:
+                    newPerson(peopleArray);
+                    break;
+                case 5:
+                    consultarEquip(teamsArray);
+                    break;
+            }
+        }while(!exit);
     }
 
     public static void nouEquip(ArrayList<Team> teamsArray){
@@ -107,7 +131,7 @@ public class Main {
             System.out.println(team);
             TeamUtility.printJugadorsAmbElSeuDorsal(team);
         }else{
-            System.out.println("team does not exists please try again with a correct team");
+            Utils.printRed("team does not exists please try again with a correct team");
         }
     }
 
@@ -123,10 +147,10 @@ public class Main {
             if(player != null){
                 System.out.println(player);
             }else{
-                System.out.println("player does not exists in that team");
+                Utils.printRed("player does not exists in that team");
             }
         }else{
-            System.out.println("team does not exists please try again with a correct team");
+            Utils.printRed("team does not exists please try again with a correct team");
         }
     }
 

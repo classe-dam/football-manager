@@ -16,4 +16,14 @@ public class Utils {
         int randomNumber = min + (max - min) * random.nextInt();
         return Math.round(randomNumber * 10) / 10;
     }
+
+    public static void printRed(String message) {
+        // ANSI escape code for red color
+        String ANSI_RED = "\u001B[31m";
+        // ANSI escape code to reset color
+        String ANSI_RESET = "\u001B[0m";
+
+        // Print message in red
+        System.out.println(ANSI_RED + message + ANSI_RESET);
+    }
 }
