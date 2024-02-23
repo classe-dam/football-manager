@@ -1,5 +1,7 @@
 package footballmanager.persons;
 
+import java.util.Objects;
+
 public class Trainer extends Person{
 
     private int numTornejosGuanyats;
@@ -45,5 +47,13 @@ public class Trainer extends Person{
         double souActual = super.getSou();
         double nouSou = souActual + (souActual * 5 / 100);
         super.setSou(nouSou);
+    }
+
+    public boolean equals(int hashCode){
+        return hashCode == this.hashCode();
+    }
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.getPersonaId());
     }
 }
