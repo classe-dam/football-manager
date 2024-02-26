@@ -29,4 +29,15 @@ public class Utils {
         System.out.println(ANSI_RED + message + ANSI_RESET);
     }
 
+    public static void printGreen(String message) {
+        // ANSI escape code for green color
+        String ANSI_GREEN = "\u001B[32m";
+        // ANSI escape code to reset color
+        String ANSI_RESET = "\u001B[0m";
+
+        // Print message in green
+        System.out.println(ANSI_GREEN + message + ANSI_RESET);
+    }
+
+
 }

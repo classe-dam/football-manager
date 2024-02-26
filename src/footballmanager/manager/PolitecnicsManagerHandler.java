@@ -3,7 +3,7 @@ package footballmanager.manager;
 import footballmanager.persons.Person;
 import footballmanager.persons.PersonFactory;
 import footballmanager.persons.Player;
-import footballmanager.persons.PlayerUtility;
+import footballmanager.persons.PlayerUtils;
 import footballmanager.teams.Team;
 import footballmanager.teams.TeamFactory;
 import footballmanager.teams.TeamUtility;
@@ -17,7 +17,7 @@ public class PolitecnicsManagerHandler {
         Team newTeam =  TeamFactory.createTeam();
         System.out.println("new team data" + newTeam);
         teamsArray.add(newTeam);
-
+        Utils.printGreen("Team added correctly");
     }
 
     public static void newPerson(ArrayList<Person> peopleArray){
@@ -30,6 +30,7 @@ public class PolitecnicsManagerHandler {
         }
         System.out.println("adding person" + createdPerson.toString());
         peopleArray.add(createdPerson);
+        Utils.printGreen("Person added correctly");
     }
 
     public static void consultarEquip(ArrayList<Team> teamsArray){
@@ -51,7 +52,7 @@ public class PolitecnicsManagerHandler {
             Team team = TeamUtility.getTeam(teamName, teamsArray);
             int dorsal = TeclatUtils.getInputInt("Wich is the player dorsal???",1,100);
             String playerName = TeclatUtils.getStringInput("Wich is the player name???");
-            int playerHashcode = PlayerUtility.generatePlayerHashCode(dorsal, playerName);
+            int playerHashcode = PlayerUtils.generatePlayerHashCode(dorsal, playerName);
             Player player = TeamUtility.getPlayerFromTeam(team,playerHashcode);
             if(player != null){
                 System.out.println(player);

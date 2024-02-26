@@ -1,7 +1,7 @@
 package footballmanager.teams;
 
 import footballmanager.persons.Player;
-import footballmanager.persons.PlayerUtility;
+import footballmanager.persons.PlayerUtils;
 import footballmanager.utils.TeclatUtils;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class TeamUtility {
     public static void printJugadorsAmbElSeuDorsal(Team team){
         System.out.println("Players of team: "+ team.getName());
         ArrayList<Player> players = team.getPlayers();
-        PlayerUtility.printJugadorsAmbElSeuDorsal(players);
+        PlayerUtils.printJugadorsAmbElSeuDorsal(players);
     }
 
     public static Team getTeam(String teamName, ArrayList<Team> teams){
@@ -31,7 +31,15 @@ public class TeamUtility {
         return null;
     }
 
-
+    public static Team getExistingTeam(String title, ArrayList<Team> teamsArray){
+        boolean doesTeamExists = false;
+        String teamName;
+        do{
+            teamName = TeclatUtils.getStringInput(title);
+            doesTeamExists = Team.doesEquipExists(teamName);
+        }while(!doesTeamExists);
+        return TeamUtility.getTeam(teamName,teamsArray);
+    }
 
     public static String GetUniqueEquipName(){
         boolean isUnique = false;

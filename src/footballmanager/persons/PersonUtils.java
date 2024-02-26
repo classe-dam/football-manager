@@ -9,6 +9,12 @@ import java.util.Iterator;
 public class PersonUtils {
     public static void printPeopleArrayToBeChoosen(ArrayList<Person> peopleArray){
         for ( Person person : peopleArray){
+            printIfTransferible(person);
+        }
+    }
+
+    private  static void printIfTransferible(Person person){
+        if (person instanceof Player && ((Player) person).esTransferible()){
             System.out.println("id: " + person.getPersonaId() +" name: " + person.getNom() + " cognom: " + person.getCognom());
         }
     }
@@ -33,7 +39,7 @@ public class PersonUtils {
         return null;
     }
 
-    public static Person choosePersonFromPersonsArray(ArrayList<Person> peopleArray, Team team){
+    public static Person choosePersonFromPersonsArray(ArrayList<Person> peopleArray){
         System.out.println("wich available player do you wanna transfer to the team");
 
         PersonUtils.printPeopleArrayToBeChoosen(peopleArray);
