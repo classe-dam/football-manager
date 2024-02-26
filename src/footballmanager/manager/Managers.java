@@ -13,7 +13,7 @@ public class Managers {
     };
 
     private static String[] preguntas_team_manager = {"Sortir","Donar de baixa equip","Modificar president/a","Destituir entrenador/a",
-            "Fitxar jugador/a o entrenador/a","Fitxar jugador/a o entrenador/a"
+            "Fitxar jugador/a o entrenador/a","Transferir jugador/a "
     };
 
     public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){
@@ -52,9 +52,6 @@ public class Managers {
         }while(!exit);
     }
 
-//    {"Sortir","Donar de baixa equip","Modificar president/a","Destituir entrenador/a",
-//            "Fitxar jugador/a o entrenador/a","Fitxar jugador/a o entrenador/a"
-//    };
     public static void initTeamManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray, Team team){
         boolean exit = false;
         do {
@@ -64,19 +61,19 @@ public class Managers {
                     exit = true;
                     break;
                 case 1:
-                    PolitecnicsManagerHandler.veureClassificacioLliga();
+                    TeamManagerHandler.removeTeam(teamsArray,peopleArray,team);
                     break;
                 case 2:
-                    PolitecnicsManagerHandler.gestionarEquip(teamsArray, peopleArray);
+                    TeamManagerHandler.modifyPresident(team);
                     break;
                 case 3:
-                    PolitecnicsManagerHandler.nouEquip(teamsArray);
+                    TeamManagerHandler.destroyTrainer(team);
                     break;
                 case 4:
-                    PolitecnicsManagerHandler.newPerson(peopleArray);
+                    TeamManagerHandler.signPerson(peopleArray,team);
                     break;
                 case 5:
-                    PolitecnicsManagerHandler.consultarEquip(teamsArray);
+                    TeamManagerHandler.transferPlayer(teamsArray,team);
                     break;
             }
         }while(!exit);

@@ -1,6 +1,7 @@
 package footballmanager.teams;
 
 import footballmanager.persons.Player;
+import footballmanager.persons.PlayerUtility;
 import footballmanager.utils.TeclatUtils;
 
 import java.util.ArrayList;
@@ -15,11 +16,7 @@ public class TeamUtility {
     public static void printJugadorsAmbElSeuDorsal(Team team){
         System.out.println("Players of team: "+ team.getName());
         ArrayList<Player> players = team.getPlayers();
-        Iterator<Player> playersIterator = players.iterator();;
-        while (playersIterator.hasNext()){
-            Player player = playersIterator.next();
-            System.out.println("dorsal: " + player.getDorsal() + " player name: " + player.getNom());
-        }
+        PlayerUtility.printJugadorsAmbElSeuDorsal(players);
     }
 
     public static Team getTeam(String teamName, ArrayList<Team> teams){

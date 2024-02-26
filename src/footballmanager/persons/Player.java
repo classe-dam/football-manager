@@ -41,10 +41,6 @@ public class Player extends Person implements Transferible{
     }
 
 
-    public boolean isTransferible() {
-        return transferible;
-    }
-
     public int getDorsal() {
         return dorsal;
     }
@@ -100,8 +96,21 @@ public class Player extends Person implements Transferible{
     public boolean esTransferible(){
         return transferible;
     };
-    public void transferirAEquip(Team e){
-//        pendent a fer
+    public void transferirAEquip(Team team){
+        if(esTransferible()){
+            team.addPlayer(this);
+        }else{
+            Utils.printRed("player is not transferible");
+        }
+    };
+
+    public void transferirAEquip(Team team,int dorsal){
+        this.dorsal = dorsal;
+        if(esTransferible()){
+            team.addPlayer(this);
+        }else{
+            Utils.printRed("player is not transferible");
+        }
     };
 
     public boolean equals(Player p){

@@ -1,5 +1,7 @@
 package footballmanager.utils;
 
+import java.lang.reflect.Method;
+import java.util.Iterator;
 import java.util.Random;
 
 public class Utils {
@@ -26,6 +28,5 @@ public class Utils {
         // Print message in red
         System.out.println(ANSI_RED + message + ANSI_RESET);
     }
-
 
 }
