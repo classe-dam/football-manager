@@ -1,6 +1,7 @@
 package footballmanager.persons;
 
 import footballmanager.teams.Team;
+import footballmanager.utils.TeclatUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,11 +20,12 @@ public class PlayerUtility {
         }
     }
 
-    public static Player takePlayerFromArrayPlayers(ArrayList<Player> players){
-        Iterator<Player> playersIterator = players.iterator();
-        while(playersIterator.hasNext()){
-            System.out.println("player");
+    public static void validateCorrectDorsal(Player player, Team team){
+        int dorsal = player.getDorsal();
+        while(team.isDorsalUsed(dorsal)){
+            dorsal = TeclatUtils.getInputInt("the dorsal " + dorsal + " is used in the team " + team.getName() + " please choose a new dorsal not used in the new team",1,100);
         }
-        return null;
+        player.setDorsal(dorsal);
     }
+
 }

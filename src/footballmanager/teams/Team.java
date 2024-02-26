@@ -130,6 +130,10 @@ public class Team {
         constructorCommonActions();
     }
 
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
+
     private void constructorCommonActions(){
         this.dorsalsUsats = new HashSet<>();
         this.players = new ArrayList<>();

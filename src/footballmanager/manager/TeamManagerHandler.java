@@ -1,8 +1,6 @@
 package footballmanager.manager;
 
-import footballmanager.persons.Person;
-import footballmanager.persons.PersonUtils;
-import footballmanager.persons.Player;
+import footballmanager.persons.*;
 import footballmanager.teams.Team;
 import footballmanager.utils.TeclatUtils;
 
@@ -25,27 +23,23 @@ public class TeamManagerHandler {
         team.removeTrainer();
     }
 
-    public static void  signPerson(ArrayList<Person> peopleArray, Team team){
-        System.out.println("wich available player do you wanna transfer to the team");
+    public static void signPerson(ArrayList<Person> peopleArray, Team team){
+        Person person = PersonUtils.choosePersonFromPersonsArray(peopleArray, team);
 
-        PersonUtils.printPeopleArrayToBeChoosen(peopleArray);
-
-        boolean validPerson = false;
-        do {
-            try{
-                int choosenPerson = TeclatUtils.getInputInt("plese choose one player by id: ",1);
-                boolean containsValue = PersonUtils.personArrayContainsPersonId(peopleArray,choosenPerson);
-                if(containsValue){
-                    validPerson = true;
-                    System.out.println("existing person good");
-                }else{
-                    System.out.println("please choose an existing person");
-                }
-            }catch(Exception err){
-                System.out.println("error checking value from iterator");
+        if (person instanceof Player){
+            Player player = (Player) person;
+            PlayerUtility.validateCorrectDorsal(player,team);
+            player.transferirAEquip(team);
+        }else if(person instanceof Trainer){
+            Trainer trainer = (Trainer) person;
+            Trainer teamTrainer = team.getTrainer();
+            if(teamTrainer == null){
+                team.setTrainer(trainer);
+            }else{
+                peopleArray.add(teamTrainer);
+                team.setTrainer(trainer);
             }
-        }while(!validPerson);
-
+        }
     }
 
     public static void transferPlayer(ArrayList<Team> teamsArray, Team team){

@@ -104,14 +104,6 @@ public class Player extends Person implements Transferible{
         }
     };
 
-    public void transferirAEquip(Team team,int dorsal){
-        this.dorsal = dorsal;
-        if(esTransferible()){
-            team.addPlayer(this);
-        }else{
-            Utils.printRed("player is not transferible");
-        }
-    };
 
     public boolean equals(Player p){
         return p.hashCode() == this.hashCode();
