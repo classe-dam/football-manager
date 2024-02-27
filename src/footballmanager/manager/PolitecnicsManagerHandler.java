@@ -68,8 +68,10 @@ public class PolitecnicsManagerHandler {
 
     }
 
-    public static void realitzarEntrenament(){
-
+    public static void realitzarEntrenament(ArrayList<Person> peopleArray){
+        for (Person person : peopleArray){
+            person.entrenar();
+        }
     }
 
     public static void veureClassificacioLliga(){

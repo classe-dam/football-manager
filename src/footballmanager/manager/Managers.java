@@ -46,7 +46,7 @@ public class Managers {
                     PolitecnicsManagerHandler.novaLliga();
                     break;
                 case 8:
-                    PolitecnicsManagerHandler.realitzarEntrenament();
+                    PolitecnicsManagerHandler.realitzarEntrenament(peopleArray);
                     break;
             }
         }while(!exit);
