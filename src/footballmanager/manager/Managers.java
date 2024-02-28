@@ -43,7 +43,7 @@ public class Managers {
                     PolitecnicsManagerHandler.consultarPersona(teamsArray);
                     break;
                 case 7:
-                    PolitecnicsManagerHandler.novaLliga();
+                    PolitecnicsManagerHandler.novaLliga(teamsArray);
                     break;
                 case 8:
                     PolitecnicsManagerHandler.realitzarEntrenament(peopleArray);

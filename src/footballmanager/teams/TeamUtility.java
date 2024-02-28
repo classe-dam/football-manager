@@ -3,6 +3,8 @@ package footballmanager.teams;
 import footballmanager.persons.Player;
 import footballmanager.persons.PlayerUtils;
 import footballmanager.utils.TeclatUtils;
+import footballmanager.utils.Utils;
+import jdk.jshell.execution.Util;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,6 +39,11 @@ public class TeamUtility {
         do{
             teamName = TeclatUtils.getStringInput(title);
             doesTeamExists = Team.doesEquipExists(teamName);
+            if(!doesTeamExists){
+                Utils.printRed("Team does not exist please provide an existing team");
+            }else{
+                Utils.printGreen("Team added correctly");
+            }
         }while(!doesTeamExists);
         return TeamUtility.getTeam(teamName,teamsArray);
     }

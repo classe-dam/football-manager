@@ -1,5 +1,7 @@
 package footballmanager.manager;
 
+import footballmanager.league.League;
+import footballmanager.league.LeagueFactory;
 import footballmanager.persons.Person;
 import footballmanager.persons.PersonFactory;
 import footballmanager.persons.Player;
@@ -64,8 +66,12 @@ public class PolitecnicsManagerHandler {
         }
     }
 
-    public static void novaLliga(){
-
+    public static void novaLliga(ArrayList<Team> teamsArray){
+        League league = LeagueFactory.newLeague(teamsArray);
+        Utils.printGreen("League created correctly now add the teams to it");
+        System.out.println("Wich teams do you wanna add?");
+        LeagueFactory.fillLeagueTeams(teamsArray, league);
+        Utils.printGreen("Teams added correctly now lets play the league");
     }
 
     public static void realitzarEntrenament(ArrayList<Person> peopleArray){
