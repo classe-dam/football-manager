@@ -1,5 +1,6 @@
 package footballmanager.manager;
 
+import footballmanager.league.League;
 import footballmanager.persons.Person;
 import footballmanager.teams.Team;
 import footballmanager.utils.TeclatUtils;
@@ -16,7 +17,7 @@ public class Managers {
             "Fitxar jugador/a o entrenador/a","Transferir jugador/a "
     };
 
-    public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){
+    public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray, League league){
         boolean exit = false;
         do {
             int choosenQuestion = TeclatUtils.getOptionChosenByUser("Welcome to Politècnics Football Manager",preguntas_manager);
@@ -25,7 +26,7 @@ public class Managers {
                     exit = true;
                     break;
                 case 1:
-                    PolitecnicsManagerHandler.veureClassificacioLliga();
+                    PolitecnicsManagerHandler.veureClassificacioLliga(league);
                     break;
                 case 2:
                     PolitecnicsManagerHandler.gestionarEquip(teamsArray, peopleArray);
@@ -43,7 +44,7 @@ public class Managers {
                     PolitecnicsManagerHandler.consultarPersona(teamsArray);
                     break;
                 case 7:
-                    PolitecnicsManagerHandler.novaLliga(teamsArray);
+                    PolitecnicsManagerHandler.novaLliga(teamsArray, league);
                     break;
                 case 8:
                     PolitecnicsManagerHandler.realitzarEntrenament(peopleArray);

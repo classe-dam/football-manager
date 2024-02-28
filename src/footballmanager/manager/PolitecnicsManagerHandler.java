@@ -19,7 +19,7 @@ public class PolitecnicsManagerHandler {
         Team newTeam =  TeamFactory.createTeam();
         System.out.println("new team data" + newTeam);
         teamsArray.add(newTeam);
-        Utils.printGreen("Team added correctly");
+        Utils.printGreen("Team created correctly");
     }
 
     public static void newPerson(ArrayList<Person> peopleArray){
@@ -66,8 +66,8 @@ public class PolitecnicsManagerHandler {
         }
     }
 
-    public static void novaLliga(ArrayList<Team> teamsArray){
-        League league = LeagueFactory.newLeague(teamsArray);
+    public static void novaLliga(ArrayList<Team> teamsArray, League league){
+        league = LeagueFactory.newLeague(teamsArray);
         Utils.printGreen("League created correctly now add the teams to it");
         System.out.println("Wich teams do you wanna add?");
         LeagueFactory.fillLeagueTeams(teamsArray, league);
@@ -80,8 +80,13 @@ public class PolitecnicsManagerHandler {
         }
     }
 
-    public static void veureClassificacioLliga(){
+    public static void veureClassificacioLliga(League league){
 
+        if (league != null){
+            league.printClassificacio();
+        }else{
+            Utils.printRed("You have to start the league before to see its classification");
+        }
     }
 
     public static void gestionarEquip(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){

@@ -41,8 +41,6 @@ public class TeamUtility {
             doesTeamExists = Team.doesEquipExists(teamName);
             if(!doesTeamExists){
                 Utils.printRed("Team does not exist please provide an existing team");
-            }else{
-                Utils.printGreen("Team added correctly");
             }
         }while(!doesTeamExists);
         return TeamUtility.getTeam(teamName,teamsArray);

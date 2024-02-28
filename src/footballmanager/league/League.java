@@ -37,8 +37,8 @@ public class League {
             }
     }
 
-    public void printResults(){
-
+    public void printClassificacio(){
+        this.toString();
     }
 
     public void disputarLliga(){
@@ -51,5 +51,16 @@ public class League {
 
     private void disputarPartits(){
 
+    }
+
+    @Override
+    public String toString() {
+        return "League{" +
+                "name='" + name + '\'' +
+                ", amountMaxParticipants=" + amountMaxParticipants +
+                ", participants=" + participants +
+                ", teamsStadistics=" + teamsStadistics +
+                ", partits=" + partits +
+                '}';
     }
 }
