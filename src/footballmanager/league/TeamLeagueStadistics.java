@@ -40,6 +40,7 @@ public class TeamLeagueStadistics {
         this.points += 3;
         this.counterGoals += counterGoals;
         this.favourGoals += favourGoals;
+        this.wonMatchesAmount +=1;
     }
 
     public void addDraw(int favourGoals, int counterGoals){
@@ -47,11 +48,13 @@ public class TeamLeagueStadistics {
         this.points += 1;
         this.counterGoals += counterGoals;
         this.favourGoals += favourGoals;
+        this.drawMatchesAmount += 1;
     }
 
     public void addLose(int favourGoals, int counterGoals){
         this.playedMatchesAmount += 1;
         this.counterGoals += counterGoals;
         this.favourGoals += favourGoals;
+        this.losedMatchesAmount +=1;
     }
 }

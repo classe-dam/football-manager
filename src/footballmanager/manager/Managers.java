@@ -17,7 +17,7 @@ public class Managers {
             "Fitxar jugador/a o entrenador/a","Transferir jugador/a "
     };
 
-    public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray, League league){
+    public static void initPolitecnicsManager(ArrayList<Team> teamsArray, ArrayList<Person> peopleArray){
         boolean exit = false;
         do {
             int choosenQuestion = TeclatUtils.getOptionChosenByUser("Welcome to Politècnics Football Manager",preguntas_manager);
@@ -26,7 +26,7 @@ public class Managers {
                     exit = true;
                     break;
                 case 1:
-                    PolitecnicsManagerHandler.veureClassificacioLliga(league);
+                    PolitecnicsManagerHandler.veureClassificacioLliga();
                     break;
                 case 2:
                     PolitecnicsManagerHandler.gestionarEquip(teamsArray, peopleArray);
@@ -44,7 +44,7 @@ public class Managers {
                     PolitecnicsManagerHandler.consultarPersona(teamsArray);
                     break;
                 case 7:
-                    PolitecnicsManagerHandler.novaLliga(teamsArray, league);
+                    PolitecnicsManagerHandler.novaLliga(teamsArray);
                     break;
                 case 8:
                     PolitecnicsManagerHandler.realitzarEntrenament(peopleArray);

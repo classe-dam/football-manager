@@ -39,13 +39,8 @@ public class Utils {
         System.out.println(ANSI_GREEN + message + ANSI_RESET);
     }
 
-    public static int getRandomInt(){
-        Random random = new Random();
-        return random.nextInt();
-    }
-
     public static int getRandomIntLimited(int max){
         Random random = new Random();
-        return random.nextInt(max);
+        return random.nextInt(max) + 1;
     }
 }

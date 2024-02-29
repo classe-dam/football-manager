@@ -44,21 +44,21 @@ public class Match {
     }
 
     public void playMatch(){
-        Random random = new Random();
         double visitorMitjana = this.getPlayerMitjanaStatsTotal(this.visitor);
         double localMitjana = this.getPlayerMitjanaStatsTotal(this.local);
         double totalMitjana = visitorMitjana + localMitjana;
 
         //is draw
-        double randomNumberDraw = random.nextDouble(10) + 1;
+        double randomNumberDraw = Utils.getRandomIntLimited(10);
         if(randomNumberDraw < 2){
-            this.setDraw();
+            int goals = Utils.getRandomIntLimited(10);
+            this.setDraw(goals);
         }
-        int goalsWinner = Utils.getRandomInt();
-        int goalsLoser = Utils.getRandomIntLimited(goalsWinner);\
+        int goalsWinner = Utils.getRandomIntLimited(10);
+        int goalsLoser = Utils.getRandomIntLimited(goalsWinner);
 
         //if not draw who is winnint
-        double randomNumber = random.nextDouble(totalMitjana) + 1;
+        double randomNumber = Utils.getRandomIntLimited(10);
         if(randomNumber <= localMitjana){
             this.setWinner(this.local, goalsWinner, goalsLoser);
             this.setLoser(this.visitor, goalsWinner, goalsLoser);
@@ -78,9 +78,11 @@ public class Match {
         stats.addLose(goalsLoser,goalsWinner);
     }
 
-    private void setDraw(int goalsWinner, int goalsLoser){
-        int goals = Utils.getRandomInt();
-
+    private void setDraw(int goalsTeams){
+        TeamLeagueStadistics statsVisitor = this.teamsStadistics.get(this.visitor);
+        TeamLeagueStadistics statsLocal = this.teamsStadistics.get(this.local);
+        statsVisitor.addDraw(goalsTeams, goalsTeams);
+        statsLocal.addDraw(goalsTeams, goalsTeams);
     }
 
     private double getPlayerMitjanaStatsTotal(Team team){

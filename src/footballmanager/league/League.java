@@ -35,6 +35,7 @@ public class League {
         //create matches
         this.crearPartits();
         //play them
+        this.disputarPartits();
     }
 
     private void crearPartits(){
@@ -49,7 +50,9 @@ public class League {
     }
 
     private void disputarPartits(){
-
+        for (Match match : this.partits){
+            match.playMatch();
+        }
     }
 
     @Override

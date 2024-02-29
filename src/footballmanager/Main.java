@@ -12,8 +12,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Person> peopleArray = new ArrayList<>();
         ArrayList<Team> teamsArray = new ArrayList<>();
-        League league = null;
         DataUtils.loadValues(peopleArray,teamsArray);
-        Managers.initPolitecnicsManager(teamsArray,peopleArray,league);
+        Managers.initPolitecnicsManager(teamsArray,peopleArray);
     }
 }

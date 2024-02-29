@@ -11,7 +11,7 @@ import java.util.HashSet;
 public class LeagueFactory {
     public static League newLeague(ArrayList<Team> teams){
         String leagueName = TeclatUtils.getStringInput("which is the league name");
-        int amountTeams = TeclatUtils.getInputInt("how many teams do you want the league have",1,teams.size());
+        int amountTeams = TeclatUtils.getInputInt("how many teams do you want the league have",2,teams.size());
         return new League(leagueName,amountTeams);
     }
 
@@ -22,6 +22,7 @@ public class LeagueFactory {
         int availableSpots = league.amountMaxParticipants - league.participants.size();
         int usedSpots = 0;
         HashSet<Team> selectedTeams = new HashSet<>();
+        boolean exit = false;
         boolean keepAdding = true;
         do{
             keepAdding = TeclatUtils.getBoolean("Do you wanna add more teams?");
@@ -37,6 +38,12 @@ public class LeagueFactory {
                 };
 
             }
-        }while(keepAdding && usedSpots < availableSpots);
+            if(selectedTeams.size() < 2 && !keepAdding){
+                Utils.printRed("enter at least 2 teams");
+            }
+            if((!keepAdding && selectedTeams.size() >= 2) || usedSpots >= availableSpots){
+                exit = true;
+            }
+        }while(!exit);
     }
 }

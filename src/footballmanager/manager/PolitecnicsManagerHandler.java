@@ -15,6 +15,8 @@ import footballmanager.utils.Utils;
 import java.util.ArrayList;
 
 public class PolitecnicsManagerHandler {
+    static League league = null;
+
     public static void nouEquip(ArrayList<Team> teamsArray){
         Team newTeam =  TeamFactory.createTeam();
         System.out.println("new team data" + newTeam);
@@ -66,13 +68,15 @@ public class PolitecnicsManagerHandler {
         }
     }
 
-    public static void novaLliga(ArrayList<Team> teamsArray, League league){
+    public static void novaLliga(ArrayList<Team> teamsArray){
         league = LeagueFactory.newLeague(teamsArray);
         Utils.printGreen("League created correctly now add the teams to it");
         System.out.println("Wich teams do you wanna add?");
         LeagueFactory.fillLeagueTeams(teamsArray, league);
         Utils.printGreen("Teams added correctly now lets play the league");
         //play league now
+        league.disputarLliga();
+        Utils.printGreen("Lliga disputada correctament");
     }
 
     public static void realitzarEntrenament(ArrayList<Person> peopleArray){
@@ -81,7 +85,7 @@ public class PolitecnicsManagerHandler {
         }
     }
 
-    public static void veureClassificacioLliga(League league){
+    public static void veureClassificacioLliga(){
         if (league != null){
             league.printClassificacio();
         }else{
