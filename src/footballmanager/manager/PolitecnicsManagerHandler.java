@@ -72,6 +72,7 @@ public class PolitecnicsManagerHandler {
         System.out.println("Wich teams do you wanna add?");
         LeagueFactory.fillLeagueTeams(teamsArray, league);
         Utils.printGreen("Teams added correctly now lets play the league");
+        //play league now
     }
 
     public static void realitzarEntrenament(ArrayList<Person> peopleArray){
@@ -81,7 +82,6 @@ public class PolitecnicsManagerHandler {
     }
 
     public static void veureClassificacioLliga(League league){
-
         if (league != null){
             league.printClassificacio();
         }else{

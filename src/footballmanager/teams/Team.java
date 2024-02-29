@@ -139,6 +139,24 @@ public class Team {
         this.players = new ArrayList<>();
     }
 
+    public double calcularMitjanaMotivacio(){
+        double amountPLayers = this.players.size();
+        double totalMitjana = 0;
+        for (Player player : this.players){
+            totalMitjana += player.getNivellMotivacio();
+        }
+        return totalMitjana / amountPLayers;
+    }
+
+    public double calcularMitjanaQualificacio(){
+        double amountPLayers = this.players.size();
+        double totalMitjana = 0;
+        for (Player player : this.players){
+            totalMitjana += player.getPuntuacio();
+        }
+        return totalMitjana / amountPLayers;
+    }
+
     public boolean equals(Team t){
         return t.hashCode() == this.hashCode();
     }
