@@ -1,6 +1,7 @@
 package footballmanager.league;
 
 import footballmanager.teams.Team;
+import footballmanager.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -53,32 +54,32 @@ public class Match {
         if(randomNumberDraw < 2){
             this.setDraw();
         }
+        int goalsWinner = Utils.getRandomInt();
+        int goalsLoser = Utils.getRandomIntLimited(goalsWinner);\
 
         //if not draw who is winnint
         double randomNumber = random.nextDouble(totalMitjana) + 1;
         if(randomNumber <= localMitjana){
-            this.setWinner(this.local);
-            this.setLoser(this.visitor);
+            this.setWinner(this.local, goalsWinner, goalsLoser);
+            this.setLoser(this.visitor, goalsWinner, goalsLoser);
         }else{
-            this.setWinner(this.visitor);
-            this.setLoser(this.local);
+            this.setWinner(this.visitor, goalsWinner, goalsLoser);
+            this.setLoser(this.local, goalsWinner, goalsLoser);
         }
     }
 
-    private void setWinner(Team team){
+    private void setWinner(Team team, int goalsWinner, int goalsLoser){
         TeamLeagueStadistics stats = this.teamsStadistics.get(team);
-        stats.addWin();
-
+        stats.addWin(goalsWinner, goalsLoser);
     }
 
-    private void setLoser(Team team){
+    private void setLoser(Team team, int goalsWinner, int goalsLoser){
         TeamLeagueStadistics stats = this.teamsStadistics.get(team);
-        stats.addLose();
-
-
+        stats.addLose(goalsLoser,goalsWinner);
     }
 
-    private void setDraw(){
+    private void setDraw(int goalsWinner, int goalsLoser){
+        int goals = Utils.getRandomInt();
 
     }
 
