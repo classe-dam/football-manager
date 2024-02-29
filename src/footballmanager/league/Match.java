@@ -43,27 +43,42 @@ public class Match {
     }
 
     public void playMatch(){
+        Random random = new Random();
         double visitorMitjana = this.getPlayerMitjanaStatsTotal(this.visitor);
         double localMitjana = this.getPlayerMitjanaStatsTotal(this.local);
         double totalMitjana = visitorMitjana + localMitjana;
 
-        Random random = new Random();
+        //is draw
+        double randomNumberDraw = random.nextDouble(10) + 1;
+        if(randomNumberDraw < 2){
+            this.setDraw();
+        }
+
+        //if not draw who is winnint
         double randomNumber = random.nextDouble(totalMitjana) + 1;
         if(randomNumber <= localMitjana){
-            setWinner(local);
-            setLoser(visitor);
+            this.setWinner(this.local);
+            this.setLoser(this.visitor);
         }else{
-            setWinner(visitor);
-            setLoser(local);
+            this.setWinner(this.visitor);
+            this.setLoser(this.local);
         }
     }
 
     private void setWinner(Team team){
         TeamLeagueStadistics stats = this.teamsStadistics.get(team);
+        stats.addWin();
 
     }
 
     private void setLoser(Team team){
+        TeamLeagueStadistics stats = this.teamsStadistics.get(team);
+        stats.addLose();
+
+
+    }
+
+    private void setDraw(){
 
     }
 
