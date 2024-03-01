@@ -1,8 +1,6 @@
 package footballmanager.league;
 
-import footballmanager.teams.Team;
-
-public class TeamLeagueStadistics {
+public class TeamLeagueStatistics {
     int playedMatchesAmount;
     int wonMatchesAmount;
     int losedMatchesAmount;
@@ -10,7 +8,7 @@ public class TeamLeagueStadistics {
     int favourGoals;
     int counterGoals;
     int points;
-    TeamLeagueStadistics(){
+    TeamLeagueStatistics(){
         this.playedMatchesAmount = 0;
         this.favourGoals = 0;
         this.counterGoals = 0;
@@ -31,6 +29,21 @@ public class TeamLeagueStadistics {
         return counterGoals;
     }
 
+    public int getPlayedMatchesAmount() {
+        return playedMatchesAmount;
+    }
+
+    public int getWonMatchesAmount() {
+        return wonMatchesAmount;
+    }
+
+    public int getLosedMatchesAmount() {
+        return losedMatchesAmount;
+    }
+
+    public int getDrawMatchesAmount() {
+        return drawMatchesAmount;
+    }
 
     public int getPoints() {
         return points;

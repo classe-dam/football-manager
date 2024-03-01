@@ -4,7 +4,6 @@ import footballmanager.teams.Team;
 import footballmanager.utils.Utils;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class Match {
     Team visitor;
@@ -12,9 +11,9 @@ public class Match {
     int visitorGoals;
     int localGoals;
     Team matchWinner;
-    HashMap<Team,TeamLeagueStadistics> teamsStadistics;
+    HashMap<Team, TeamLeagueStatistics> teamsStadistics;
 
-    public Match(Team visitor, Team local, HashMap<Team,TeamLeagueStadistics> teamsStadistics) {
+    public Match(Team visitor, Team local, HashMap<Team, TeamLeagueStatistics> teamsStadistics) {
         this.visitorGoals = 0;
         this.localGoals = 0;
         this.matchWinner = null;
@@ -53,6 +52,7 @@ public class Match {
         if(randomNumberDraw < 2){
             int goals = Utils.getRandomIntLimited(10);
             this.setDraw(goals);
+            return;
         }
         int goalsWinner = Utils.getRandomIntLimited(10);
         int goalsLoser = Utils.getRandomIntLimited(goalsWinner);
@@ -69,18 +69,18 @@ public class Match {
     }
 
     private void setWinner(Team team, int goalsWinner, int goalsLoser){
-        TeamLeagueStadistics stats = this.teamsStadistics.get(team);
+        TeamLeagueStatistics stats = this.teamsStadistics.get(team);
         stats.addWin(goalsWinner, goalsLoser);
     }
 
     private void setLoser(Team team, int goalsWinner, int goalsLoser){
-        TeamLeagueStadistics stats = this.teamsStadistics.get(team);
+        TeamLeagueStatistics stats = this.teamsStadistics.get(team);
         stats.addLose(goalsLoser,goalsWinner);
     }
 
     private void setDraw(int goalsTeams){
-        TeamLeagueStadistics statsVisitor = this.teamsStadistics.get(this.visitor);
-        TeamLeagueStadistics statsLocal = this.teamsStadistics.get(this.local);
+        TeamLeagueStatistics statsVisitor = this.teamsStadistics.get(this.visitor);
+        TeamLeagueStatistics statsLocal = this.teamsStadistics.get(this.local);
         statsVisitor.addDraw(goalsTeams, goalsTeams);
         statsLocal.addDraw(goalsTeams, goalsTeams);
     }

@@ -15,8 +15,8 @@ public class LeagueFactory {
         return new League(leagueName,amountTeams);
     }
 
-    public static TeamLeagueStadistics newTeamStadistics(){
-        return new TeamLeagueStadistics();
+    public static TeamLeagueStatistics newTeamStadistics(){
+        return new TeamLeagueStatistics();
     }
     public static void fillLeagueTeams(ArrayList<Team> teams, League league){
         int availableSpots = league.amountMaxParticipants - league.participants.size();
