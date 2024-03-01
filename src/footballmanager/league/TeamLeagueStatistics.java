@@ -15,10 +15,6 @@ public class TeamLeagueStatistics {
         this.points = 0;
     }
 
-    public int getPlayedMatchEs() {
-        return playedMatchesAmount;
-    }
-
 
     public int getFavourGoals() {
         return favourGoals;
@@ -33,16 +29,8 @@ public class TeamLeagueStatistics {
         return playedMatchesAmount;
     }
 
-    public int getWonMatchesAmount() {
-        return wonMatchesAmount;
-    }
-
-    public int getLosedMatchesAmount() {
-        return losedMatchesAmount;
-    }
-
-    public int getDrawMatchesAmount() {
-        return drawMatchesAmount;
+    public int getDifferenceGoals(){
+        return this.counterGoals - this.favourGoals;
     }
 
     public int getPoints() {

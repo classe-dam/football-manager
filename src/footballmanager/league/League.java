@@ -33,14 +33,25 @@ public class League {
         Collections.sort(list, new Comparator<Map.Entry<Team, TeamLeagueStatistics>>() {
             @Override
             public int compare(Map.Entry<Team, TeamLeagueStatistics> o1, Map.Entry<Team, TeamLeagueStatistics> o2) {
-                return Integer.compare(o2.getValue().getPoints(), o1.getValue().getPoints());
+                int pointsComparison = Integer.compare(o2.getValue().getPoints(), o1.getValue().getPoints());
+
+                // If points are equal, compare to goals
+                if (pointsComparison == 0) {
+                    return Integer.compare(o2.getValue().getDifferenceGoals(),o1.getValue().getDifferenceGoals());
+                }
+
+                // Return the comparison result based on points
+                return pointsComparison;
             }
         });
 
         // Print the sorted LinkedList
         int position = 1;
-        for (Map.Entry<Team, TeamLeagueStatistics> entry : list) {
-            //afegir lo de distingir per gols a favor el ordre
+        HashSet<Team> printedTeams = new HashSet<>();
+        Iterator<Map.Entry<Team, TeamLeagueStatistics>> iterator = list.iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<Team, TeamLeagueStatistics> entry = iterator.next();
             Team team = entry.getKey();
             TeamLeagueStatistics statistics = entry.getValue();
             System.out.println(
