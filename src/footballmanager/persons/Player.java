@@ -55,10 +55,11 @@ public class Player extends Person implements Transferible{
 
     @Override
     public void entrenar(){
-        super.entrenar();
+        double nouNivellMotivacio = this.getNivellMotivacio() + 2;
+        this.setNivellMotivacio(nouNivellMotivacio);
         double multiplier = getMultiplier();
         double puntuacio = super.getPuntuacio() + multiplier;
-        super.setPuntuacio(puntuacio);
+        this.setPuntuacio(puntuacio);
         this.canviarPosicio();
     }
 

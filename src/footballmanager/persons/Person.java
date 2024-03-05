@@ -14,13 +14,6 @@ public abstract class Person {
 
     private double sou;
 
-    public void entrenar(){
-        this.nivellMotivacio += 2;
-        if(this.nivellMotivacio > 10){
-            this.nivellMotivacio = 10;
-        }
-    }
-
     public Person(String nom, String cognom, String dataNaix, double sou) {
         Person.numPersones += 1;
         this.personaId = Person.numPersones;
@@ -86,7 +79,12 @@ public abstract class Person {
 
     public void setNivellMotivacio(double nivellMotivacio) {
         this.nivellMotivacio = nivellMotivacio;
+        if(this.nivellMotivacio > 10){
+            this.nivellMotivacio = 10;
+        }
     }
+
+    public abstract void entrenar();
 
     @Override
     public String toString() {
