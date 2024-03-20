@@ -38,16 +38,21 @@ public class FileUtils {
     }
 
     public static String generateTrainerFileData(Trainer trainer){
-        return "trainer" + ";" +
-                trainer.getPersonaId() + ";" +
-                trainer.getNom() + ";" +
-                trainer.getCognom() + ";" +
-                trainer.getDataNaix() + ";" +
-                trainer.getNivellMotivacio() + ";" +
-                trainer.getPuntuacio() + ";" +
-                trainer.getSou() + ";" +
-                trainer.getNumTornejosGuanyats()  + ";" +
-                trainer.isSeleccionadorNacional();
+        if(trainer != null){
+            return "trainer" + ";" +
+                    trainer.getPersonaId() + ";" +
+                    trainer.getNom() + ";" +
+                    trainer.getCognom() + ";" +
+                    trainer.getDataNaix() + ";" +
+                    trainer.getNivellMotivacio() + ";" +
+                    trainer.getPuntuacio() + ";" +
+                    trainer.getSou() + ";" +
+                    trainer.getNumTornejosGuanyats()  + ";" +
+                    trainer.isSeleccionadorNacional();
+        }else{
+            return null;
+        }
+
     }
 
     public static String insertPlayersDataIntoFile(Team team, BufferedWriter bw){
