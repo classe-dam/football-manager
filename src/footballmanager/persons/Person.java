@@ -25,6 +25,7 @@ public abstract class Person {
         this.puntuacio = Utils.randomNumberBetween(30,100);
     }
 
+
     public double getSou() {
         return sou;
     }

@@ -32,6 +32,10 @@ public class Player extends Person implements Transferible{
         this.posicio = posicio;
     }
 
+    public boolean isTransferible() {
+        return transferible;
+    }
+
     public Posicio getPosicio() {
         return posicio;
     }
