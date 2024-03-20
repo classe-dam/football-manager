@@ -1,6 +1,7 @@
 package footballmanager.utils;
 
 import footballmanager.persons.Player;
+import footballmanager.persons.Trainer;
 import footballmanager.teams.Team;
 
 import java.io.BufferedWriter;
@@ -34,6 +35,19 @@ public class FileUtils {
                 player.isTransferible() + ";" +
                 player.getDorsal() + ";" +
                 player.getPosicio();
+    }
+
+    public static String generateTrainerFileData(Trainer trainer){
+        return "player" + ";" +
+                trainer.getPersonaId() + ";" +
+                trainer.getNom() + ";" +
+                trainer.getCognom() + ";" +
+                trainer.getDataNaix() + ";" +
+                trainer.getNivellMotivacio() + ";" +
+                trainer.getPuntuacio() + ";" +
+                trainer.getSou() + ";" +
+                trainer.getNumTornejosGuanyats()  + ";" +
+                trainer.isSeleccionadorNacional();
     }
 
     public static String insertPlayersDataIntoFile(Team team, BufferedWriter bw){
