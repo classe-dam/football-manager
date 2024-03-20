@@ -129,9 +129,11 @@ public class PolitecnicsManagerHandler {
                 String dataTeam = FileUtils.generateTeamFileData(team);
                 bw.write(dataTeam);
                 bw.write(System.lineSeparator());
-                Utils.printGreen("Team data with name " + team.getName() + " has been saved correctly");
                 FileUtils.insertPlayersDataIntoFile(team,bw);
-                Utils.printGreen("PLayers data of team name " + team.getName() + " has been saved correctly");
+                String trainerData = FileUtils.generateTrainerFileData(team.getTrainer());
+                bw.write(trainerData);
+                bw.write(System.lineSeparator());
+                Utils.printGreen("Team data with name " + team.getName() + " has been saved correctly");
             }
         }catch(Exception err){
             System.out.println("error saving teams" + err);

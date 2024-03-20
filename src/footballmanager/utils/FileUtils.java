@@ -38,7 +38,7 @@ public class FileUtils {
     }
 
     public static String generateTrainerFileData(Trainer trainer){
-        return "player" + ";" +
+        return "trainer" + ";" +
                 trainer.getPersonaId() + ";" +
                 trainer.getNom() + ";" +
                 trainer.getCognom() + ";" +
