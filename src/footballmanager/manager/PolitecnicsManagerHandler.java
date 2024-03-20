@@ -12,6 +12,7 @@ import footballmanager.teams.TeamUtility;
 import footballmanager.utils.FileUtils;
 import footballmanager.utils.TeclatUtils;
 import footballmanager.utils.Utils;
+import jdk.jshell.execution.Util;
 
 import javax.sound.midi.Soundbank;
 import java.io.*;
@@ -122,12 +123,24 @@ public class PolitecnicsManagerHandler {
             br = new BufferedReader(new FileReader(path));
 
             String line;
+            Team updatingTeam = null;
             while ((line = br.readLine() )!= null){
-                System.out.println("line " + line);
                 String[] parts = line.split(";");
+                switch (parts[0]){
+                    case "team":
+                        // create the new team
 
+                        //add it into updating team
+                        break;
+                    case "trainer":
+                        //add the trainer into the team
+                        break;
+                    case "player":
+                        //add the player into the team
+                        break;
+                }
             }
-
+            Utils.printGreen("Teams haven been imported correclty");
 
         }catch(Exception err){
             System.out.println("error saving teams" + err);
