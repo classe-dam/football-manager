@@ -13,9 +13,8 @@ import footballmanager.utils.FileUtils;
 import footballmanager.utils.TeclatUtils;
 import footballmanager.utils.Utils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import javax.sound.midi.Soundbank;
+import java.io.*;
 import java.util.ArrayList;
 
 public class PolitecnicsManagerHandler {
@@ -108,7 +107,40 @@ public class PolitecnicsManagerHandler {
     }
 
     public static void loadTeams(ArrayList<Team> teamsArray){
+        String path = "data/" + FileUtils.removePathInvalidChars(TeclatUtils.getStringInput("Specifiy the filemame where the temas will be saved, without specifying the directory and the filee xtension")) + ".txt";
+        Utils.printGreen("File will be saved on path " + path);
 
+        BufferedReader br = null;
+        try{
+            File file = new File(path);
+
+            if(!file.exists()){
+                Utils.printRed("File does not exits");
+                return;
+            }
+
+            br = new BufferedReader(new FileReader(path));
+
+            String line;
+            while ((line = br.readLine() )!= null){
+                System.out.println("line " + line);
+                String[] parts = line.split(";");
+
+            }
+
+
+        }catch(Exception err){
+            System.out.println("error saving teams" + err);
+        }finally {
+            try{
+                if(br != null){
+                    br.close();
+                }
+
+            }catch(Exception e){
+                System.out.println("Error closing the file");
+            }
+        }
     }
 
     public static void saveTeams(ArrayList<Team> teamsArray){
