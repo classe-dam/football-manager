@@ -9,9 +9,13 @@ import footballmanager.persons.PlayerUtils;
 import footballmanager.teams.Team;
 import footballmanager.teams.TeamFactory;
 import footballmanager.teams.TeamUtility;
+import footballmanager.utils.FileUtils;
 import footballmanager.utils.TeclatUtils;
 import footballmanager.utils.Utils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class PolitecnicsManagerHandler {
@@ -101,6 +105,42 @@ public class PolitecnicsManagerHandler {
         }else{
             Utils.printRed("team does not exists please try again with a correct team");
         }
+    }
+
+    public static void loadTeams(ArrayList<Team> teamsArray){
+
+    }
+
+    public static void saveTeams(ArrayList<Team> teamsArray){
+        String path = "data/" + FileUtils.removePathInvalidChars(TeclatUtils.getStringInput("Specifiy the filemame where the temas will be saved, without specifying the directory and the filee xtension")) + ".txt";
+        Utils.printGreen("File will be saved on path " + path);
+
+        BufferedWriter bw = null;
+        try{
+            File file = new File(path);
+
+            if(!file.exists()){
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+
+            for (Team team : teamsArray){
+                String dataTeam = FileUtils.generateTeamFileData(team);
+                bw.write(dataTeam);
+                bw.write(System.lineSeparator());
+            }
+        }catch(Exception err){
+            System.out.println("error saving teams" + err);
+        }finally {
+            try{
+                bw.close();
+            }catch(Exception e){
+                System.out.println("Error closing the file");
+            }
+        }
+
     }
 
 }

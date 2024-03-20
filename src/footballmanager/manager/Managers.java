@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Managers {
     private static String[] preguntas_manager = {"Sortir","Veure classificació lliga","Gestionar equip","Donar d'alta equip",
             "Donar d'alta jugador/a o entrenador/a","Consultar dades equip","Consultar dades jugador/a",
-            "Disputar nova lliga","Realitzar sessió entrenament"
+            "Disputar nova lliga","Realitzar sessió entrenament","Carregar dades equips", "Desar dades equips"
     };
 
     private static String[] preguntas_team_manager = {"Sortir","Donar de baixa equip","Modificar president/a","Destituir entrenador/a",
@@ -48,6 +48,12 @@ public class Managers {
                     break;
                 case 8:
                     PolitecnicsManagerHandler.realitzarEntrenament(peopleArray);
+                    break;
+                case 9:
+                    PolitecnicsManagerHandler.loadTeams(teamsArray);
+                    break;
+                case 10:
+                    PolitecnicsManagerHandler.saveTeams(teamsArray);
                     break;
             }
         }while(!exit);
