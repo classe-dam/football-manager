@@ -1,0 +1,6 @@
+team;team1;null;null;Date;Barcelona
+player;1;player1;playersurname1;birthDate;5.0;1.452336E8;1000000.0;true;5;DAV
+player;2;player2;playersurname2;birthDate;5.0;3.4231232E7;1000000.0;true;6;DAV
+trainer;6;trainer1;trainersurname3;birthDate;5.0;1.3789262E8;10000.0;5;true
+team;team2;null;null;Date;Texas
+player;3;player3;playersurname3;birthDate;5.0;1.73952985E8;1000000.0;true;7;DAV
