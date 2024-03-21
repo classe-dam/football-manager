@@ -12,7 +12,8 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Person> peopleArray = new ArrayList<>();
         ArrayList<Team> teamsArray = new ArrayList<>();
-        DataUtils.loadValues(peopleArray,teamsArray);
+        // testing only
+//        DataUtils.loadValues(peopleArray,teamsArray);
         Managers.initPolitecnicsManager(teamsArray,peopleArray);
     }
 }

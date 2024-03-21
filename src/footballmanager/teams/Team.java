@@ -31,8 +31,6 @@ public class Team {
         equipNames.add(equipName);
     }
 
-
-
     public String getName() {
         return name;
     }

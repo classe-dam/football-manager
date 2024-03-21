@@ -32,6 +32,14 @@ public class Player extends Person implements Transferible{
         this.posicio = posicio;
     }
 
+    public Player(int personaId, String nom, String cognom, String dataNaix, double nivellMotivacio,
+                  double puntuacio, double sou, boolean transferible, int dorsal, Posicio posicio) {
+        super(personaId, nom, cognom, dataNaix, nivellMotivacio, puntuacio, sou);
+        this.transferible = transferible;
+        this.dorsal = dorsal;
+        this.posicio = posicio;
+    }
+
     public boolean isTransferible() {
         return transferible;
     }

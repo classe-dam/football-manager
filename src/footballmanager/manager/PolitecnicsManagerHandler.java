@@ -2,10 +2,7 @@ package footballmanager.manager;
 
 import footballmanager.league.League;
 import footballmanager.league.LeagueFactory;
-import footballmanager.persons.Person;
-import footballmanager.persons.PersonFactory;
-import footballmanager.persons.Player;
-import footballmanager.persons.PlayerUtils;
+import footballmanager.persons.*;
 import footballmanager.teams.Team;
 import footballmanager.teams.TeamFactory;
 import footballmanager.teams.TeamUtility;
@@ -129,14 +126,62 @@ public class PolitecnicsManagerHandler {
                 switch (parts[0]){
                     case "team":
                         // create the new team
-
+                        Team team = new Team(
+                                parts[2],
+                                parts[3],
+                                parts[1],
+                                parts[4],
+                                parts[5]);
                         //add it into updating team
+                        teamsArray.add(team);
+                        updatingTeam = team;
                         break;
                     case "trainer":
                         //add the trainer into the team
+                        Trainer trainer = new Trainer(
+                                Integer.valueOf(parts[8]),
+                                Boolean.valueOf(parts[9]),
+                                Integer.valueOf(parts[1]),
+                                parts[2],
+                                parts[3],
+                                parts[4],
+                                Double.valueOf(parts[5]),
+                                Double.valueOf(parts[6]),
+                                Double.valueOf(parts[7])
+                        );
+                        updatingTeam.setTrainer(trainer);
                         break;
                     case "player":
+                        Player.Posicio posicio = Player.Posicio.DAV;
+                        switch (parts[10]) {
+                            case "DEF":
+                                posicio = Player.Posicio.DEF;
+                            case "POR":
+                                posicio = Player.Posicio.POR;
+                            case "MIG":
+                                posicio = Player.Posicio.MIG;
+                            case "DAV":
+                                posicio = Player.Posicio.DAV;
+                            default:
+                                posicio = Player.Posicio.DAV;
+                        }
+                        Player player = new Player(
+                                Integer.valueOf(parts[1]),
+                                parts[2],
+                                parts[3],
+                                parts[4],
+                                Double.valueOf(parts[5]),
+                                Double.valueOf(parts[6]),
+                                Double.valueOf(parts[7]),
+                                Boolean.valueOf(parts[8]),
+                                Integer.valueOf(parts[9]),
+                                posicio
+                        );
+
                         //add the player into the team
+                        updatingTeam.addPlayer(player);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -166,6 +211,16 @@ public class PolitecnicsManagerHandler {
 
             if(!file.exists()){
                 file.createNewFile();
+            }else{
+                Boolean wannaReplace = TeclatUtils.getBoolean("this file is already in use, do you want to remove the old data \n" +
+                        "and save the new one?");
+                if(wannaReplace){
+                    file.delete();
+                    file.createNewFile();
+                }else{
+                    return;
+                }
+
             }
 
             FileWriter fw = new FileWriter(file);

@@ -25,6 +25,15 @@ public abstract class Person {
         this.puntuacio = Utils.randomNumberBetween(30,100);
     }
 
+    public Person(int personaId, String nom, String cognom, String dataNaix, double nivellMotivacio, double puntuacio, double sou) {
+        this.personaId = personaId;
+        this.nom = nom;
+        this.cognom = cognom;
+        this.dataNaix = dataNaix;
+        this.nivellMotivacio = nivellMotivacio;
+        this.puntuacio = puntuacio;
+        this.sou = sou;
+    }
 
     public double getSou() {
         return sou;

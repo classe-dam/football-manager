@@ -13,6 +13,13 @@ public class Trainer extends Person{
         this.seleccionadorNacional = seleccionadorNacional;
     }
 
+    public Trainer(int numTornejosGuanyats, boolean seleccionadorNacional, int personaId, String nom, String cognom,
+                   String dataNaix, double nivellMotivacio, double puntuacio, double sou) {
+        super(personaId, nom, cognom, dataNaix, nivellMotivacio, puntuacio, sou);
+        this.numTornejosGuanyats = numTornejosGuanyats;
+        this.seleccionadorNacional = seleccionadorNacional;
+    }
+
     public int getNumTornejosGuanyats() {
         return numTornejosGuanyats;
     }
